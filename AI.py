@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
 #converts AI response to json format
 def str2json(string):
-    return json.loads(str(string))
+    return json.loads(string)
 
 #trust me bro, we don't want to dox you
 location = geocoder.ip('me').city
@@ -28,18 +28,15 @@ agent =  Client() #without this line, the program wouldn't be possible
 def getResponse(text):
     response = agent.chat.completions.create(
         model="gpt-4o",
-        messages = [{"role": "system", "content": (f"""Your only purpose is to convert text into a json file format, nothing else, 
-                                                throw an error if there's not enough information, use judgement 
-                                                to find out what format the date is in and time, 
-                                                if no timezone is given, assume The timezone based off this location: {location}, you may not even need it,
-                                                    do not send unneccacary information, only the json file format, 
-                                                no embeds either because your response will be used as a string inserted 
-                                                into a file, don't use '`' at all either, if there is no event title/description 
-                                                use the date/time in MM-DD-YYYY HH:MM format as the title,
-                                                however only use this if there is no event information, json format is 'event', 'start_date', 'end date', 
-                                                'location", 'event details' in that order and nothing else. if there is no location, 'None'. 
-                                                If there is no end date specified put an hour after the time it starts. If there is no end date put at 23:59,
-                                                  if there is no year assume the year is {year}, MAKE SURE IT IS IN JSON FORMAT""")},
+        messages = [{"role": "system", "content": (f"""YYou are a strict JSON formatter. Your task is to respond with valid JSON in the following format:
+                    {{
+                        "event": "Event Title",
+                        "start_date": "MM-DD-YYYY HH:MM",
+                        "end_date": "MM-DD-YYYY HH:MM",
+                        "location": "Location",
+                        "event_details": "Details"
+                    }}. If any of the fields are missing, respond with 'None' where appropriate, and if no event title/description is present, use the date and time in MM-DD-YYYY HH:MM format as the title. The year should default to {year}. The start date and end date should be properly handled with assumed times where applicable (e.g., 23:59 for end time if not specified).
+                    Your response **must** be in this format or throw an error. Do not include any extra information or use new lines, backslashes, or other formatting. Ensure everything is enclosed in a valid JSON structure.""")},
                                                     {"role": "user", "content": text}],
         web_search = False
     )
@@ -48,5 +45,7 @@ def getResponse(text):
 
 #This is the part of the code the other files will use
 def getResponseJson(txt0):
-    strRespo = getResponse(str(txt0))
-    return str2json(strRespo)
+    strRespo = getResponse(txt0).choices[0].message.content
+    jsConverted = str2json(strRespo)
+    return(jsConverted)
+            
