@@ -3,7 +3,6 @@ from g4f.client import Client
 import geocoder
 import asyncio
 
-<<<<<<< HEAD
 if __name__ == "__main__":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
@@ -33,16 +32,3 @@ icsFile.write(response.choices[0].message.content)
 icsFile.close()
 
 #print(response.choices[0].message.content)
-=======
-def stuff(text):
-    location = "Detroit"
-    agent =  Client()
-
-    response = agent.chat.completions.create(
-        model="gpt-4o",
-        messages = [{"role": "system", "content": f"Your only purpose is to convert text into an ics file format, nothing else, throw an error if there's not enough information, use judgement to find out what format the date is in and time, if no timezone is given, assume based off this location: {location}"}, {"role": "user", "content": "uhhhhh"}],
-        web_search = False
-    )
-
-    print(response.choices[0].message.content)
->>>>>>> f9a4fd05c19973f2bfb269b3d3a133665b442870
