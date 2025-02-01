@@ -198,6 +198,18 @@ class CalendarScreen(Screen):
         self.add_widget(layout)
 
     def create_event_grid(self):
+        # Example JSON data
+        # [
+        #     {
+        #         "event": "Out of Office",
+        #         "start_date": "02-03-2025 00:00",
+        #         "end_date": "02-07-2025 23:59",
+        #         "location": "None",
+        #         "event_details": "The user will be out of the office with no access to email during this period."
+        #     },
+
+        # (The "events" label was removed and the event format changed)
+
         """Create a grid with events from the JSON."""
         data = load_json()
         events = data.get("events", [])

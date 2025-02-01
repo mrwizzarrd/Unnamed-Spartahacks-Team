@@ -10,11 +10,6 @@ Takes in the cherry picked events json data and converts it to an ICS file forma
 :return: The ICS calendar object.
 '''
 def json_to_ics(json_string: str):
-    if json_string[0] != "[": # Check if the JSON string is a list and fix
-        json_string = f"[\n{json_string}]"
-    if json_string[-1] != "]":
-        json_string = f"{json_string}\n]"
-
     # Parse JSON data
     json_data = json.loads(json_string)
 

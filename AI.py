@@ -24,7 +24,13 @@ location = geocoder.ip('me').city
 agent =  Client() #without this line, the program wouldn't be possible
 
 
-#gets the AI response using an extremely professional system prompt to make sure the AI responds correctly
+'''
+Gets the AI response using the GPT-4o model.
+Uses custom prompt to get the AI response in the correct json format.
+
+:param text: The text to send to the AI.
+:return: The AI response.
+'''
 def getResponse(text):
     response = agent.chat.completions.create(
         model="gpt-4o",
@@ -41,6 +47,19 @@ def getResponse(text):
         web_search = False
     )
     return(response)
+
+'''
+Fixes the JSON string by adding brackets if they are missing.
+
+:param json_string: The JSON string to fix.
+:return: The fixed JSON string.
+'''
+def make_list(json_string):
+    if json_string[0] != "[": # Check if the JSON string is a list and fix
+        json_string = f"[\n{json_string}]"
+    if json_string[-1] != "]":
+        json_string = f"{json_string}\n]"
+    return json_string
 
 
 #This is the part of the code the other files will use
