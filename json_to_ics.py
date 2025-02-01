@@ -19,7 +19,7 @@ def json_to_ics(json_string: str):
     cal = Calendar()
 
     # Add events to the calendar
-    for event_data in json_data["events"]:
+    for event_data in json_data:
         event = Event()
 
         # Add event name
