@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
 #converts AI response to json format
 def str2json(string):
-    return json.loads(string)
+    return json.loads(str(string))
 
 #trust me bro, we don't want to dox you
 location = geocoder.ip('me').city
