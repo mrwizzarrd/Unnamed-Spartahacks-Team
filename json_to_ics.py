@@ -13,17 +13,6 @@ def json_to_ics(json_string: str):
     # Parse JSON data
     json_data = json.loads(json_string)
 
-# {
-#     "events": [
-#         {
-#             "event": "Event Name",
-#             "start_date": "YYYY-MM-DD HH:mm",
-#             "end_date": "YYYY-MM-DD HH:mm",
-#             "location": "Event location",
-#             "event_details": "Event details."
-#         }
-#     ]
-# }
 
     # Cherry pick what events to include in the calendar
     # Create a new calendar
@@ -42,22 +31,26 @@ def json_to_ics(json_string: str):
         if event_data["event_details"] != "None":
             event.description = event_data["event_details"]
 
-        # Handle date and time
-        
+# {
+#     "events": [
+#         {
+#             "event": "Event Name",
+#             "start_date": "YYYY-MM-DD HH:mm",
+#             "end_date": "YYYY-MM-DD HH:mm",
+#             "location": "Event location",
+#             "event_details": "Event details."
+#         }
+#     ]
+# }
+        # Add date and time
+        event.begin = datetime.strptime(event_data["start_date"], "%Y-%M-%D %H:%m")
 
-
-        # # Handle date and time
-        # if "start_date" in event_data:  # For multi-day events
-        #     event.begin = datetime.strptime(event_data["start_date"], "%Y-%m-%d")
-        #     event.end = datetime.strptime(event_data["end_date"], "%Y-%m-%d")
-        # else:  # For single-day events
-        #     event.begin = datetime.strptime(event_data["date"], "%Y-%m-%d")
-        #     if event_data["time"] != "Unknown":
-        #         start_time = datetime.strptime(event_data["time"].split(" - ")[0], "%I:%M %p").time()
-        #         end_time = datetime.strptime(event_data["time"].split(" - ")[1], "%I:%M %p").time()
-        #         event.begin = datetime.combine(event.begin.date(), start_time)
-        #         event.end = datetime.combine(event.begin.date(), end_time)
-
+        if "end_date" != "None":
+            event.end = datetime.strptime(event_data["end_date"], "%Y-%M-%D %H:%m")
+        elif "end_date" == "All Day":
+            event.end = datetime.strptime(event_data["start_date"], "%Y-%M-%D %H:%m")
+        else: # Default duration is 1 hour
+            event.duration = event_data[{"hours": 1}]
 
         cal.events.add(event)
 
