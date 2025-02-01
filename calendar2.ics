@@ -2,10 +2,32 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:ics.py - http://git.io/lLljaA
 BEGIN:VEVENT
-DESCRIPTION:User will be out of office with no access to email from Monday\, February 3rd through Friday\, February 7th. Scheduled appointments are available for 20-minute slots. Express advising available on Wednesday\, February 12th from 1-4pm at Wilson G-60. Summer Transfer Courses info session on Monday\, February 10th from 3-4pm. College of Engineering Admissions info session on Tuesday\, February 18th.
+DESCRIPTION:Express advising for quick questions only.
+DTEND:20250212T160000Z
+LOCATION:Wilson G-60
+DTSTART:20250212T130000Z
+SUMMARY:Express Advising
+UID:b0103194-0a1e-41c6-8b3a-94f513aa64f8@b010.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Out of office with no access to email.
 DTEND:20250207T235900Z
 DTSTART:20250203T000000Z
-SUMMARY:Weekly Email Notification
-UID:4b60e944-ea84-4e53-ae9e-68b255099eec@4b60.org
+SUMMARY:Out of Office
+UID:b29791af-35f7-4ddc-a5b1-6226295af7e0@b297.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Learn about the process and requirements to apply for admission to the College of Engineering at MSU.
+DTEND:20250218T235900Z
+DTSTART:20250218T000000Z
+SUMMARY:College of Engineering Admissions
+UID:9b63a508-48c6-41c9-8834-640f7666bd35@9b63.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Learn about signing up for summer courses from other schools and transferring credits back to MSU.
+DTEND:20250210T160000Z
+DTSTART:20250210T150000Z
+SUMMARY:Summer Transfer Courses
+UID:4a80820e-96c0-43a9-a9e2-ddcef00c9986@4a80.org
 END:VEVENT
 END:VCALENDAR
