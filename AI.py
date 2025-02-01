@@ -4,7 +4,10 @@ import geocoder
 import asyncio
 import json
 
+<<<<<<< HEAD
 #<<<<<<< HEAD
+=======
+>>>>>>> b6e4a7d172f0529b6d4164891166faccd0b05d0e
 if __name__ == "__main__":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
@@ -53,16 +56,17 @@ icsFile.write(response.choices[0].message.content)
 icsFile.close()
 
 #print(response.choices[0].message.content)
+<<<<<<< HEAD
 #=======
 def stuff(text):
     location = "Detroit"
     agent =  Client()
+=======
+>>>>>>> b6e4a7d172f0529b6d4164891166faccd0b05d0e
 
-    response = agent.chat.completions.create(
-        model="gpt-4o",
-        messages = [{"role": "system", "content": f"Your only purpose is to convert text into an ics file format, nothing else, throw an error if there's not enough information, use judgement to find out what format the date is in and time, if no timezone is given, assume based off this location: {location}"}, {"role": "user", "content": "uhhhhh"}],
-        web_search = False
-    )
 
+<<<<<<< HEAD
     print(response.choices[0].message.content)
 #>>>>>>> f9a4fd05c19973f2bfb269b3d3a133665b442870"""
+=======
+>>>>>>> b6e4a7d172f0529b6d4164891166faccd0b05d0e

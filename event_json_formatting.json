@@ -1,0 +1,11 @@
+{
+    "events": [
+        {
+            "event": "Event Name",
+            "start_date": "YYYY-MM-DD HH:mm",
+            "end_date": "YYYY-MM-DD HH:mm",
+            "location": "Event location",
+            "event_details": "Event details."
+        }
+    ]
+}
