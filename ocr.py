@@ -57,6 +57,17 @@ json_data = '''
 # Parse JSON data
 data = json.loads(json_data)
 
+# Cherry pick what events to include in the calendar
+
+
+
+
+
+
+
+
+
+
 # Create a new calendar
 cal = Calendar()
 
