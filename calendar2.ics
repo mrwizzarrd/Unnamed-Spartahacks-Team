@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:ics.py - http://git.io/lLljaA
+BEGIN:VEVENT
+DESCRIPTION:User will be out of office with no access to email from Monday\, February 3rd through Friday\, February 7th. Scheduled appointments are available for 20-minute slots. Express advising available on Wednesday\, February 12th from 1-4pm at Wilson G-60. Summer Transfer Courses info session on Monday\, February 10th from 3-4pm. College of Engineering Admissions info session on Tuesday\, February 18th.
+DTEND:20250207T235900Z
+DTSTART:20250203T000000Z
+SUMMARY:Weekly Email Notification
+UID:4b60e944-ea84-4e53-ae9e-68b255099eec@4b60.org
+END:VEVENT
+END:VCALENDAR

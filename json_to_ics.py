@@ -10,6 +10,11 @@ Takes in the cherry picked events json data and converts it to an ICS file forma
 :return: The ICS calendar object.
 '''
 def json_to_ics(json_string: str):
+    if json_string[0] != "[": # Check if the JSON string is a list and fix
+        json_string = f"[\n{json_string}]"
+    if json_string[-1] != "]":
+        json_string = f"{json_string}\n]"
+
     # Parse JSON data
     json_data = json.loads(json_string)
 
@@ -31,27 +36,11 @@ def json_to_ics(json_string: str):
         if event_data["event_details"] != "None":
             event.description = event_data["event_details"]
 
-# {
-#     "events": [
-#         {
-#             "event": "Event Name",
-#             "start_date": "YYYY-MM-DD HH:mm",
-#             "end_date": "YYYY-MM-DD HH:mm",
-#             "location": "Event location",
-#             "event_details": "Event details."
-#         }
-#     ]
-# }
         # Add date and time
-        event.begin = datetime.strptime(event_data["start_date"], "%Y-%M-%D %H:%m")
+        event.begin = datetime.strptime(event_data["start_date"], "%m-%d-%Y %H:%M")
+        event.end = datetime.strptime(event_data["end_date"], "%m-%d-%Y %H:%M")
 
-        if "end_date" != "None":
-            event.end = datetime.strptime(event_data["end_date"], "%Y-%M-%D %H:%m")
-        elif "end_date" == "All Day":
-            event.end = datetime.strptime(event_data["start_date"], "%Y-%M-%D %H:%m")
-        else: # Default duration is 1 hour
-            event.duration = event_data[{"hours": 1}]
-
+        # Add event to the calendar
         cal.events.add(event)
 
     return cal
