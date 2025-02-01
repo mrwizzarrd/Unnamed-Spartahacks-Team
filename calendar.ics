@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:ics.py - http://git.io/lLljaA
+BEGIN:VEVENT
+DESCRIPTION:No access to email during this period.
+DTEND:20250207T000000Z
+DTSTART:20250203T000000Z
+SUMMARY:Out of Office
+UID:82718d84-a8ed-4ef3-b39d-36f8d4a40b74@8271.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Learn more about signing up for summer courses from other schools and transferring credits back to MSU. Register online.
+DTEND:20250210T160000Z
+DTSTART:20250210T150000Z
+SUMMARY:Summer Transfer Courses Info Session
+UID:df4a5f16-a427-4aa2-9d11-c068fcbd149f@df4a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:For quick questions only.
+DTEND:20250212T160000Z
+LOCATION:In-person at Wilson G-60
+DTSTART:20250212T130000Z
+SUMMARY:Express Advising
+UID:74fbefd6-8207-4b5c-92fd-325ab89d68b9@74fb.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Learn more about the process and requirements to apply for admission to the College of Engineering at MSU.
+DTSTART:20250218T000000Z
+SUMMARY:College of Engineering Admissions Info Session
+UID:84544f23-5aa6-423e-91bb-1b9287ab74df@8454.org
+END:VEVENT
+END:VCALENDAR
