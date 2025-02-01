@@ -29,7 +29,7 @@ def getResponse(text):
         messages = [{"role": "system", "content": (f"""Your only purpose is to convert text into a json file format, nothing else, 
                                                 throw an error if there's not enough information, use judgement 
                                                 to find out what format the date is in and time, 
-                                                if no timezone is given, assume based off this location: {location},
+                                                if no timezone is given, assume The timezone based off this location: {location}, you may not even need it,
                                                     do not send unneccacary information, only the json file format, 
                                                 no embeds either because your response will be used as a string inserted 
                                                 into a file, don't use '`' at all either, if there is no event title/description 
@@ -43,7 +43,7 @@ def getResponse(text):
     return(response)
 
 jsonString = getResponse(txt).choices[0].message.content
-
+print(str2json(jsonString))
 """filename = agent.chat.completions.create(
     model="gpt-4o",
     messages=[{"role": "system", "content": "your only purpose is to generate a filename for an ICS file (without .ics, or backslash n, NO BACKSLASH N AT ALL IT WILL RUIN THE FILE, NO NEW LINE) based off the information provided, the onlything you will send is a filename NOTHING ELSE, no embeds, no '`' just a filename"}, {"role": "user", "content": text}],
