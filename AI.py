@@ -1,28 +1,27 @@
+#This file is sponsored by these pachages
+
 import g4f
 from g4f.client import Client
 import geocoder
 import asyncio
 import json
 
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-#=======
-#>>>>>>> b6e4a7d172f0529b6d4164891166faccd0b05d0e
+
+#uhhh chat gpt told me to put this here so the code would function properly
 if __name__ == "__main__":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-def getText():
-    return("Spartahack Closing Ceramony, 02-02-2025, 4pm")
-
+#converts AI response to json format
 def str2json(string):
     return json.loads(string)
 
-
+#trust me bro, we don't want to dox you
 location = geocoder.ip('me').city
-agent =  Client()
 
-txt = getText()
+agent =  Client() #without this line, the program wouldn't be possible
 
+
+#gets the AI response using an extremely professional system prompt to make sure the AI responds correctly
 def getResponse(text):
     response = agent.chat.completions.create(
         model="gpt-4o",
@@ -42,31 +41,8 @@ def getResponse(text):
     )
     return(response)
 
-jsonString = getResponse(txt).choices[0].message.content
-print(str2json(jsonString))
-"""filename = agent.chat.completions.create(
-    model="gpt-4o",
-    messages=[{"role": "system", "content": "your only purpose is to generate a filename for an ICS file (without .ics, or backslash n, NO BACKSLASH N AT ALL IT WILL RUIN THE FILE, NO NEW LINE) based off the information provided, the onlything you will send is a filename NOTHING ELSE, no embeds, no '`' just a filename"}, {"role": "user", "content": text}],
-    web_search=False
-)
 
-icsFile = open(f"{filename.choices[0].message.content}.ics", "w")
-
-icsFile.write(response.choices[0].message.content)
-icsFile.close()
-
-#print(response.choices[0].message.content)
-<<<<<<< HEAD
-#=======
-def stuff(text):
-    location = "Detroit"
-    agent =  Client()
-=======
-#>>>>>>> b6e4a7d172f0529b6d4164891166faccd0b05d0e
-
-
-<<<<<<< HEAD
-    print(response.choices[0].message.content)
-#>>>>>>> f9a4fd05c19973f2bfb269b3d3a133665b442870"""
-#=======
-#>>>>>>> b6e4a7d172f0529b6d4164891166faccd0b05d0e
+#This is the part of the code the other files will use
+def getResponseJson(txt0):
+    strRespo = getResponse(str(txt0))
+    return str2json(strRespo)
