@@ -1,4 +1,5 @@
 import cv2
+import ocr
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.graphics import Color, Rectangle
@@ -11,6 +12,8 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
 from kivy.uix.scrollview import ScrollView
 from kivy.graphics.texture import Texture
+from kivy.uix.filechooser import FileChooserIconView
+from kivy.uix.popup import Popup
 from datetime import datetime
 import json
 
@@ -65,6 +68,11 @@ class MainScreen(Screen):
         button_calendar.bind(on_press=self.change_screen_calendar)
         layout.add_widget(button_calendar)
 
+        button_upload = Button(text="Upload Photo", size_hint=(None, None), size=(200, 50),
+                               pos_hint={'center_x': 0.5})
+        button_upload.bind(on_press=self.upload_photo)
+        layout.add_widget(button_upload)
+
         self.add_widget(layout)
 
     def change_text(self, instance):
@@ -75,6 +83,21 @@ class MainScreen(Screen):
 
     def change_screen_calendar(self, instance):
         self.manager.current = 'calendar'  # Accessing ScreenManager via self.manager
+
+    def upload_photo(self, instance):
+        # Create a file chooser to select a file
+        filechooser = FileChooserIconView()
+        filechooser.bind(on_selection=self.on_file_select)
+
+        # Create and show a popup with the file chooser
+        popup = Popup(title="Select an Image", content=filechooser, size_hint=(0.8, 0.8))
+        popup.open()
+
+    def on_file_select(self, instance, value):
+        if value:
+            filepath = value[0]
+            print(f"File selected: {filepath}")
+            ocr.ocr(filepath)  # Process the selected image with OCR
 
     def _update_rect(self, instance, value):
         self.rect.pos = instance.pos
@@ -135,6 +158,7 @@ class CameraScreen(Screen):
             filename = f"photo_{current_time}.jpg"
             cv2.imwrite(filename, frame)
             print(f"Picture saved as {filename}")
+            ocr.ocr(filename)
 
     def go_back_to_main(self, instance):
         self.manager.current = 'main'  # Go back to the main screen
