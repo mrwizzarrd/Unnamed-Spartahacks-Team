@@ -32,3 +32,5 @@ icsFile.write(response.choices[0].message.content)
 icsFile.close()
 
 #print(response.choices[0].message.content)
+
+
