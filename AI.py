@@ -35,7 +35,7 @@ def getResponse(text):
                         "end_date": "MM-DD-YYYY HH:MM",
                         "location": "Location",
                         "event_details": "Details"
-                    }}. If any of the fields are missing, respond with 'None' where appropriate, and if no event title/description is present, use the date and time in MM-DD-YYYY HH:MM format as the title. The year should default to {year}. The start date and end date should be properly handled with assumed times where applicable (e.g., 23:59 for end time if not specified).
+                    }}. If any of the fields are missing, respond with 'None' where appropriate, and if no event title/description is present, use the date and time in MM-DD-YYYY HH:MM format as the title, unless there is enough information to use as the event title. The year should default to {year}. The start date and end date should be properly handled with assumed times where applicable (e.g., 23:59 for end time if not specified).
                     Your response **must** be in this format or throw an error. Do not include any extra information or use new lines, backslashes, or other formatting. Ensure everything is enclosed in a valid JSON structure.""")},
                                                     {"role": "user", "content": text}],
         web_search = False
