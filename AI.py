@@ -32,7 +32,7 @@ def getResponse(text):
                     {{
                         "event": "Event Title",
                         "start_date": "MM-DD-YYYY HH:MM",
-                        "end_date": "MM-DD-YYYY HH:MM" ,
+                        "end_date": "MM-DD-YYYY HH:MM",
                         "location": "Location",
                         "event_details": "Details"
                     }}. If any of the fields are missing, respond with 'None' where appropriate, and if no event title/description is present, use the date and time in MM-DD-YYYY HH:MM format as the title. The year should default to {year}. The start date and end date should be properly handled with assumed times where applicable (e.g., 23:59 for end time if not specified).
