@@ -1,12 +1,13 @@
 import pytesseract
 from PIL import Image
+import AI
 
 # Load an image
 image = Image.open('image.png')
 
 # Perform OCR on the image
 text = pytesseract.image_to_string(image)
-print(text) # Print the text extracted from the image
+AI.stuff(text) # Print the text extracted from the image
 
 
 
@@ -64,7 +65,7 @@ cal = Calendar()
 for event_data in data["events"]:
     event = Event()
     event.name = event_data["event"]
-    
+
     # Handle date and time
     if "start_date" in event_data:  # For multi-day events
         event.begin = datetime.strptime(event_data["start_date"], "%Y-%m-%d")
@@ -76,13 +77,13 @@ for event_data in data["events"]:
             end_time = datetime.strptime(event_data["time"].split(" - ")[1], "%I:%M %p").time()
             event.begin = datetime.combine(event.begin.date(), start_time)
             event.end = datetime.combine(event.begin.date(), end_time)
-    
+
     # Add location and description
     if "location" in event_data:
         event.location = event_data["location"]
     if "notes" in event_data:
         event.description = event_data["notes"]
-    
+
     cal.events.add(event)
 
 # Save the calendar to an .ics file
