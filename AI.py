@@ -39,7 +39,7 @@ def getResponse(text):
                                                 however only use this if there is no event information, json format is 'event', 'start_date', 'end date', 
                                                 'location", 'event details' in that order and nothing else. if there is no location, 'None'. 
                                                 If there is no end date specified put an hour after the time it starts. If there is no end date put at 23:59,
-                                                  if there is no year assume the year is {year}""")},
+                                                  if there is no year assume the year is {year}, MAKE SURE IT IS IN JSON FORMAT""")},
                                                     {"role": "user", "content": text}],
         web_search = False
     )
