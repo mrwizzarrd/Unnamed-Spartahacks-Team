@@ -5,6 +5,9 @@ from g4f.client import Client
 import geocoder
 import asyncio
 import json
+import datetime
+
+year = datetime.datetime.now().year
 
 
 #uhhh chat gpt told me to put this here so the code would function properly
@@ -35,7 +38,8 @@ def getResponse(text):
                                                 use the date/time in MM-DD-YYYY HH:MM format as the title,
                                                 however only use this if there is no event information, json format is 'event', 'start_date', 'end date', 
                                                 'location", 'event details' in that order and nothing else. if there is no location, 'None'. 
-                                                If there is no end date specified put an hour after the time it starts. If there is no end date put at 23:59""")},
+                                                If there is no end date specified put an hour after the time it starts. If there is no end date put at 23:59,
+                                                  if there is no year assume the year is {year}""")},
                                                     {"role": "user", "content": text}],
         web_search = False
     )
